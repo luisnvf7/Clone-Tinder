@@ -1,12 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { RegisterPage } from './register.page';
-
 const routes: Routes = [
   {
-    path: '',
-    component: RegisterPage
+    path: 'register-welcome',
+    loadChildren: () => import('./register-welcome/register-welcome.module').then( m => m.RegisterWelcomePageModule)
+  },
+  {
+    path: 'register-gender',
+    loadChildren: () => import('./register-gender/register-gender.module').then( m => m.RegisterGenderPageModule)
+  },
+  {
+    path: 'register-orientation',
+    loadChildren: () => import('./register-orientation/register-orientation.module').then( m => m.RegisterOrientationPageModule)
+  },
+  {
+    path: 'register-showme',
+    loadChildren: () => import('./register-showme/register-showme.module').then( m => m.RegisterShowmePageModule)
+  },
+  {
+    path: 'personal-information',
+    loadChildren: () => import('./personal-information/personal-information.module').then( m => m.PersonalInformationPageModule)
   }
 ];
 
