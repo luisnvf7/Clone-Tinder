@@ -1,0 +1,28 @@
+.content-container {
+    height: 100%;
+    padding: 25px 25px 25px 25px;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+
+    :nth-child(1) {
+        font-size: 38px;
+    }
+
+    :nth-child(2){
+        color: gray;
+        font-size: 20px;
+        margin-top: 1rem;
+    }
+}
+
+.list-orientation {
+    max-height: 60%;
+    overflow: scroll;
+}
+
+ion-item{
+    height: 4rem;
+}
