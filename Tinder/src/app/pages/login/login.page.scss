@@ -1,0 +1,59 @@
+@import "../../styles/color.scss";
+
+ion-content{
+  --ion-background-color: linear-gradient(
+    180deg,
+    #fda015 0%,
+    #eb3b21 51.04%,
+    #e00028 100%
+  );;
+}
+
+.content-layout{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout-child {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ion-input {
+  margin-top: 20%;
+  border-radius: 15px;
+  width: 100%;
+  max-height: 40px !important;
+  margin: 10px 0px 20px 0px;
+  background-color: white;
+}
+
+ion-button {
+  margin-top: 10%;
+  --border-radius: 45px;
+  color: black;
+  --background: white;
+}
+
+.inputs-container {
+  width: 80%;
+}
+
+.input-register {
+  margin-top: 20%;
+  color: white;
+}
+
+.user-label, .password-label {
+  color: white;
+  font-size: 25px;
+}
+
+.tinder-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
