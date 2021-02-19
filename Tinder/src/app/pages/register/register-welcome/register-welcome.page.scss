@@ -8,6 +8,11 @@ ion-text {
   max-width: 80%;
 }
 
+ion-img {
+  width: 65px;
+  height: 65px;
+}
+
 ion-button {
   --color: white;
   font-weight: bold;
@@ -18,6 +23,14 @@ ion-button {
   height: 50px;
   width: 80%;
   --background: linear-gradient(89.82deg, #eb3b21 0.11%, #e00028 99.84%);
+}
+
+.img-container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 80%;
+  margin: 10px;
 }
 
 .container {
