@@ -8,6 +8,8 @@ import { RegisterShowmePageRoutingModule } from './register-showme-routing.modul
 
 import { RegisterShowmePage } from './register-showme.page';
 
+import { ButtomRegisterComponent } from "../../../components/buttom-register/buttom-register.component"
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,6 @@ import { RegisterShowmePage } from './register-showme.page';
     IonicModule,
     RegisterShowmePageRoutingModule
   ],
-  declarations: [RegisterShowmePage]
+  declarations: [RegisterShowmePage, ButtomRegisterComponent]
 })
 export class RegisterShowmePageModule {}
