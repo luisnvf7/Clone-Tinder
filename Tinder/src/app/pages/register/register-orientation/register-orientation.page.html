@@ -13,48 +13,21 @@
     </div>
 
     <div class = "list-orientation">
-      <ion-item>
+      <ion-item *ngFor = "let orientation of orientations; let i = index" (click)="onSelectOrientation(i, !orientations[i].isSelected)">
         <ion-label>
-          Heterosexual
+          {{ orientation.name }}
         </ion-label>
-      </ion-item><ion-item>
-        <ion-label>
-          Gay
-        </ion-label>
-      </ion-item><ion-item>
-        <ion-label>
-          Lesbiana
-        </ion-label>
-      </ion-item><ion-item>
-        <ion-label>
-          Bisexual
-        </ion-label>
-      </ion-item><ion-item>
-        <ion-label>
-          Item
-        </ion-label>
-      </ion-item><ion-item>
-        <ion-label>
-          Item
-        </ion-label>
+        <ion-icon class="custom-icon" *ngIf="orientation.isSelected" name="checkmark-outline"></ion-icon>
       </ion-item>
-      <ion-item>
-        <ion-label>
-          Item
-        </ion-label>
-      </ion-item><ion-item>
-        <ion-label>
-          Item
-        </ion-label>
-      </ion-item><ion-item>
-        <ion-label>
-          Item
-        </ion-label>
-      </ion-item><ion-item>
-        <ion-label>
-          Item
-        </ion-label>
-      </ion-item>
+    </div>
+
+    <div class="checkbox-container">
+      <ion-checkbox (ionChange)="checked($event.detail.checked)"></ion-checkbox>
+      <ion-label>Mostrar mi orientacion en mi perfil</ion-label>
+    </div>
+
+    <div class = "button-container">
+      <app-buttom-register [title]="'CONTINUAR'" [isDisabled]="disableButton"></app-buttom-register>
     </div>
   </div>
 </ion-content>
