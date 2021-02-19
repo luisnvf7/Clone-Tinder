@@ -1,0 +1,17 @@
+.ion-button-register {
+    --border-radius: 45px;
+    color: white;
+    --background: linear-gradient(89.82deg, #eb3b21 0.11%, #e00028 99.84%);
+    width: 100%;
+    font-size: 25px;
+    height: 3.5rem;
+}
+
+ion-button {
+    --border-radius: 45px;
+    width: 100%;
+    font-size: 25px;
+    height: 3.5rem;
+    --background: white;
+    color: gray
+}
