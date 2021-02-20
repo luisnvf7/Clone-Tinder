@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SexualOrientationInterface } from 'src/app/models/sexualOrientationInterface';
+import { AuthService } from 'src/app/services/auth.service';
 
 import  { ModelInterface  } from "../../../models/modelInterface"
 
@@ -54,7 +56,12 @@ export class RegisterOrientationPage implements OnInit {
     }
   ]
 
-  constructor() { }
+  private _showOrientation : boolean = false
+
+
+  private _sexualOrientation : SexualOrientationInterface
+
+  constructor(private _authService : AuthService) { }
 
   ngOnInit() {
   }
@@ -74,7 +81,24 @@ export class RegisterOrientationPage implements OnInit {
   }
 
   public checked (value : boolean) : void {
-    console.log("VALUE", value)
+    this._showOrientation = value
   }
+
+  public sendData () : void {
+    this._sexualOrientation = {
+      orientations: this.orientations.filter(v => v.isSelected).map(v => {
+        delete v.isSelected
+        return {
+          ...v
+        }
+      }),
+      isVisibleProfile : this._showOrientation
+    }
+    this._authService.userInformation = {
+      ...this._authService.userInformation,
+      sexualOrientation : this._sexualOrientation
+    }
+  }
+
 
 }

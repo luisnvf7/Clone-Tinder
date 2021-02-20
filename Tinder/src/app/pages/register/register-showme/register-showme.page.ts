@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 import  { ModelInterface } from "../../../models/modelInterface"
 @Component({
@@ -27,12 +28,13 @@ export class RegisterShowmePage implements OnInit {
   }
 ] 
 
-  constructor() { }
+  private _genderToShow : ModelInterface
 
-  ngOnInit() {
-  }
+  constructor(private _authService : AuthService) { }
 
-  public buttonnSelected (index : number) : void {
+  ngOnInit() {}
+
+  public buttonSelected (index : number) : void {
     this.genderValues = this.genderValues.map(v => {
       return {
         ...v,
@@ -41,5 +43,18 @@ export class RegisterShowmePage implements OnInit {
     })
     this.genderValues[index].isSelected = true
     this.disableButton = false
+  }
+
+  sendData () : void {
+    this._genderToShow = this.genderValues.find(v => {
+      return v.isSelected
+    })
+
+    delete this._genderToShow.isSelected
+
+    this._authService.userInformation = {
+      genderToShow: this._genderToShow,
+      ...this._authService.userInformation 
+    }
   }
 }
