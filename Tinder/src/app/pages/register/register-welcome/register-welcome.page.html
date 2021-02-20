@@ -1,3 +1,5 @@
+<header-register [url]="'login'" [value]="0.2" [buffer]="0.4"></header-register>
+
 <ion-content>
   <div class="container">
     <div class="img-container">
@@ -31,6 +33,11 @@
       Siempre denuncia el mal comportamiento
     </ion-text>
 
-    <ion-button>Continuar</ion-button>
+    <app-buttom-register
+      [url]="'/register/register-gender'"
+      [isDisabled]="false"
+      title="continuar"
+      class="btn"
+    ></app-buttom-register>
   </div>
 </ion-content>

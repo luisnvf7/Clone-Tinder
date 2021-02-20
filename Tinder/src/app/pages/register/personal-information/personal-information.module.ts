@@ -1,3 +1,5 @@
+import { HeaderRegisterComponent } from './../../../components/header-register/header-register.component';
+import { ButtomRegisterComponent } from 'src/app/components/buttom-register/buttom-register.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,8 +15,12 @@ import { PersonalInformationPage } from './personal-information.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    PersonalInformationPageRoutingModule
+    PersonalInformationPageRoutingModule,
   ],
-  declarations: [PersonalInformationPage]
+  declarations: [
+    PersonalInformationPage,
+    ButtomRegisterComponent,
+    HeaderRegisterComponent,
+  ],
 })
 export class PersonalInformationPageModule {}

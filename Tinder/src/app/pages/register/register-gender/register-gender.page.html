@@ -1,7 +1,7 @@
 <header-register
-  [move]="'login'"
-  [value]="0.2"
-  [buffer]="0.5"
+  [url]="'register/register-welcome'"
+  [value]="0.4"
+  [buffer]="0.6"
 ></header-register>
 
 <ion-content>
@@ -17,7 +17,7 @@
         <ion-checkbox [(ngModel)]="checked" (ionChange)="onCheckBox()"></ion-checkbox>
         <ion-label>Mostar mi genero en mi perfil</ion-label>
       </div>
-      <app-buttom-register [isDisabled]="disableButton" [title]="'Continuar'"></app-buttom-register>
+      <app-buttom-register [url]="'register/register-orientation'" [isDisabled]="disableButton" [title]="'Continuar'"></app-buttom-register>
     </div>
   </div>
 </ion-content>

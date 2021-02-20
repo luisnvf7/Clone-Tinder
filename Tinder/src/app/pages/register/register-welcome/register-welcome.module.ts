@@ -1,3 +1,5 @@
+import { ButtomRegisterComponent } from './../../../components/buttom-register/buttom-register.component';
+import { HeaderRegisterComponent } from './../../../components/header-register/header-register.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,8 +15,12 @@ import { RegisterWelcomePage } from './register-welcome.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    RegisterWelcomePageRoutingModule
+    RegisterWelcomePageRoutingModule,
   ],
-  declarations: [RegisterWelcomePage]
+  declarations: [
+    RegisterWelcomePage,
+    HeaderRegisterComponent,
+    ButtomRegisterComponent,
+  ],
 })
 export class RegisterWelcomePageModule {}
