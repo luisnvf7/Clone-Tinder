@@ -27,7 +27,7 @@
     </div>
 
     <div class = "button-container">
-      <app-buttom-register [title]="'CONTINUAR'" [isDisabled]="disableButton" [url]="'/register/register-showme'"></app-buttom-register>
+      <app-buttom-register [title]="'CONTINUAR'" [isDisabled]="disableButton" [url]="'/register/register-showme'" (onSendData)="sendData()"></app-buttom-register>
     </div>
   </div>
 </ion-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Router } from '@angular/router';
 
@@ -21,11 +21,14 @@ export class ButtomRegisterComponent implements OnInit {
 
   @Input('url') private _url : string = "" 
 
+  @Output() public onSendData = new EventEmitter()
+
   constructor(private _router: Router) { }
 
   ngOnInit() {}
 
   public goToAnotherPage () : void {
+    this.onSendData.emit()
     this._router.navigateByUrl(this._url)
   }
 
