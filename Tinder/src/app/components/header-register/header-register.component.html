@@ -5,8 +5,6 @@
     [buffer]="buffer"
   ></ion-progress-bar>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button [defaultHref]="move"> </ion-back-button>
-    </ion-buttons>
+      <ion-icon (click)="navigate()" size="large" name="chevron-back-sharp"></ion-icon>
   </ion-toolbar>
 </ion-header>
