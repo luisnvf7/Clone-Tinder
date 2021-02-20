@@ -9,15 +9,24 @@
 .buttons-container{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 ion-button {
     --border-radius: 45px;
     --border-color: gray;
-    width: 100%;
-    font-size: 25px;
-    height: 3.5rem;
     --background: white;
     color: gray;
+    border-width: 2px;
     border: solid;
+    border-radius: 45px;
+    width: 80%;
+    font-size: 25px;
+    height: 3.5rem;
+}
+
+.button-selected {
+    color: red;
 }

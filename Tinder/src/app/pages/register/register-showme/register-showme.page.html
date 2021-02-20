@@ -11,9 +11,7 @@
       <ion-text>Muestrenme</ion-text>
     </div>
     <div class = "buttons-container">
-      <ion-button>MUJERES</ion-button>
-      <ion-button>HOMBRES</ion-button>
-      <ion-button>TODOS</ion-button>
+      <ion-button class = "{{gender.isSelected ? 'button-selected' : ''}}" *ngFor="let gender of genderValues let i = index" (click)="buttonnSelected(i)">{{ gender.name | uppercase }}</ion-button>
     </div>
     <app-buttom-register [title]="'CONTINUAR'"></app-buttom-register>
   </div>

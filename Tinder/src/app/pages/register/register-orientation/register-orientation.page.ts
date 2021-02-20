@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import  { SexualOrientation  } from "../../../models/orientationModel"
+import  { ModelInterface  } from "../../../models/modelInterface"
 
 @Component({
   selector: 'app-register-orientation',
@@ -11,7 +11,7 @@ export class RegisterOrientationPage implements OnInit {
 
   public disableButton : boolean = true
 
-  public orientations : SexualOrientation[] = [
+  public orientations : ModelInterface[] = [
     { 
       id: 1, 
       name: "Heterosexual",
