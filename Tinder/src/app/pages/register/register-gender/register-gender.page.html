@@ -14,10 +14,10 @@
     </div>
     <div class="bottom-container">
       <div class="checkbox-container">
-        <ion-checkbox [(ngModel)]="checked" (ionChange)="onCheckBox()"></ion-checkbox>
+        <ion-checkbox (ionChange)="onCheckBox($event.detail.checked)"></ion-checkbox>
         <ion-label>Mostar mi genero en mi perfil</ion-label>
       </div>
-      <app-buttom-register [url]="'register/register-orientation'" [isDisabled]="disableButton" [title]="'Continuar'"></app-buttom-register>
+      <app-buttom-register (onSendData)="sendData()" [url]="'register/register-orientation'" [isDisabled]="disableButton" [title]="'Continuar'"></app-buttom-register>
     </div>
   </div>
 </ion-content>

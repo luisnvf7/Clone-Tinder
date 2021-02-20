@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ModelInterface } from '../../../models/modelInterface';
 
@@ -9,25 +10,26 @@ import { ModelInterface } from '../../../models/modelInterface';
 export class RegisterGenderPage implements OnInit {
   public checked: boolean = false;
   public disableButton: boolean = true;
+  private _genderData: ModelInterface;
 
   public genderValues: ModelInterface[] = [
     {
       id: 1,
-      name: 'mujeres',
+      name: 'mujer',
       isSelected: false,
     },
     {
       id: 2,
-      name: 'hombres',
+      name: 'hombre',
       isSelected: false,
     },
   ];
 
-  constructor() {}
+  constructor(private _authService: AuthService) {}
 
   ngOnInit() {}
 
-  public selectSex(index): void {
+  public selectSex(index: number): void {
     this.genderValues = this.genderValues.map((g) => {
       return {
         ...g,
@@ -37,7 +39,24 @@ export class RegisterGenderPage implements OnInit {
 
     this.genderValues[index].isSelected = true;
     this.disableButton = false;
+
+    this._genderData = {
+      id: this.genderValues[index].id,
+      name: this.genderValues[index].name,
+    };
   }
 
-  public onCheckBox(): void {}
+  public onCheckBox(value: boolean): void {
+    this.checked = value;
+    console.log(value);
+  }
+
+  public sendData(): void {
+
+    this._authService.userInformation = {
+      ...this._authService.userInformation,
+      gender: { ...this._genderData, isVisibleProfile: this.checked },
+    };
+
+  }
 }
