@@ -1,3 +1,6 @@
+@import "./../../../styles/color.scss";
+
+
 .showme-container {
     height: 100%;  
     display: flex;  
@@ -16,9 +19,9 @@
 
 ion-button {
     --border-radius: 45px;
-    --border-color: gray;
+    --border-color: $color-grey;
     --background: white;
-    color: gray;
+    color: $color-grey;
     border-width: 2px;
     border: solid;
     border-radius: 45px;
@@ -28,7 +31,7 @@ ion-button {
 }
 
 .button-selected {
-    color: red;
+    color: $color-pink;
 }
 
 .text-container {
