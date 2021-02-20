@@ -8,6 +8,8 @@ import  { ModelInterface } from "../../../models/modelInterface"
 })
 export class RegisterShowmePage implements OnInit {
 
+  public disableButton : boolean = true
+
   public genderValues : ModelInterface[] = [{
     id: 1,
     name: "mujeres",
@@ -38,5 +40,6 @@ export class RegisterShowmePage implements OnInit {
       }
     })
     this.genderValues[index].isSelected = true
+    this.disableButton = false
   }
 }

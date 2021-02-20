@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-buttom-register',
   templateUrl: './buttom-register.component.html',
@@ -17,8 +19,14 @@ export class ButtomRegisterComponent implements OnInit {
 
   @Input() public title : string = "" 
 
-  constructor() { }
+  @Input('url') private _url : string = "" 
+
+  constructor(private _router: Router) { }
 
   ngOnInit() {}
+
+  public goToAnotherPage () : void {
+    this._router.navigateByUrl(this._url)
+  }
 
 }

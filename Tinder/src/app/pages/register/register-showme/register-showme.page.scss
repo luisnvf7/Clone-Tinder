@@ -1,7 +1,7 @@
 .showme-container {
     height: 100%;  
     display: flex;  
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
 }
@@ -29,4 +29,19 @@ ion-button {
 
 .button-selected {
     color: red;
+}
+
+.text-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30%;
+
+    ion-text{
+        font-size: 40px;
+    }
+}
+
+.button-container{
+    width: 80%;
 }

@@ -10,6 +10,8 @@ import { RegisterShowmePage } from './register-showme.page';
 
 import { ButtomRegisterComponent } from "../../../components/buttom-register/buttom-register.component"
 
+import { HeaderRegisterComponent } from './../../../components/header-register/header-register.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +19,6 @@ import { ButtomRegisterComponent } from "../../../components/buttom-register/but
     IonicModule,
     RegisterShowmePageRoutingModule
   ],
-  declarations: [RegisterShowmePage, ButtomRegisterComponent]
+  declarations: [RegisterShowmePage, ButtomRegisterComponent, HeaderRegisterComponent]
 })
 export class RegisterShowmePageModule {}

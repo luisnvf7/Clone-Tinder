@@ -10,6 +10,8 @@ import { RegisterOrientationPage } from './register-orientation.page';
 
 import { ButtomRegisterComponent } from "../../../components/buttom-register/buttom-register.component"
 
+import { HeaderRegisterComponent } from './../../../components/header-register/header-register.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +19,6 @@ import { ButtomRegisterComponent } from "../../../components/buttom-register/but
     IonicModule,
     RegisterOrientationPageRoutingModule
   ],
-  declarations: [RegisterOrientationPage, ButtomRegisterComponent]
+  declarations: [RegisterOrientationPage, ButtomRegisterComponent, HeaderRegisterComponent]
 })
 export class RegisterOrientationPageModule {}

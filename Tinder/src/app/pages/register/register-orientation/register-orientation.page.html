@@ -1,8 +1,8 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-icon name="arrow-back-outline" style="zoom:2.5; margin-left: 0.4rem;"></ion-icon>
-  </ion-toolbar>
-</ion-header>
+<header-register
+  [url]="'/register/register-gender'"
+  [value]="0.6"
+  [buffer]="0.5"
+></header-register>
 
 <ion-content>
 
@@ -27,7 +27,7 @@
     </div>
 
     <div class = "button-container">
-      <app-buttom-register [title]="'CONTINUAR'" [isDisabled]="disableButton"></app-buttom-register>
+      <app-buttom-register [title]="'CONTINUAR'" [isDisabled]="disableButton" [url]="'/register/register-showme'"></app-buttom-register>
     </div>
   </div>
 </ion-content>

@@ -1,21 +1,19 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>register-showme</ion-title>
-  </ion-toolbar>
-</ion-header>
+<header-register
+  [url]="'/register/register-orientation'"
+  [value]="0.8"
+  [buffer]="0.5"
+></header-register>
 
 <ion-content>
-
   <div class="showme-container">
-    <div>
+    <div class="text-container">
       <ion-text>Muestrenme</ion-text>
     </div>
     <div class = "buttons-container">
       <ion-button class = "{{gender.isSelected ? 'button-selected' : ''}}" *ngFor="let gender of genderValues let i = index" (click)="buttonnSelected(i)">{{ gender.name | uppercase }}</ion-button>
     </div>
-    <app-buttom-register [title]="'CONTINUAR'"></app-buttom-register>
+    <div class="button-container">
+      <app-buttom-register [title]="'continuar'" [isDisabled]="disableButton" [url]="'/register/personal-information'"></app-buttom-register>
+    </div>
   </div>
-
-
-
 </ion-content>
