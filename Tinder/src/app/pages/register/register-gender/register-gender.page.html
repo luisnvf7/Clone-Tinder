@@ -1,9 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>register-gender</ion-title>
-  </ion-toolbar>
-</ion-header>
+<header-register
+  [move]="'login'"
+  [value]="0.2"
+  [buffer]="0.5"
+></header-register>
 
 <ion-content>
-
+  <div class="container">
+    <div class="text-container">
+      <ion-text><strong>Soy</strong></ion-text>
+    </div>
+    <div class="btn-medium-container">
+      <ion-button [ngClass]="(gender.isSelected) ? 'btn-color-pink' : '.'" (click)="selectSex(i)" *ngFor="let gender of genderValues let i = index">{{gender.name | uppercase}}</ion-button>
+    </div>
+    <div class="bottom-container">
+      <div class="checkbox-container">
+        <ion-checkbox [(ngModel)]="checked" (ionChange)="onCheckBox()"></ion-checkbox>
+        <ion-label>Mostar mi genero en mi perfil</ion-label>
+      </div>
+      <app-buttom-register [isDisabled]="disableButton" [title]="'Continuar'"></app-buttom-register>
+    </div>
+  </div>
 </ion-content>
