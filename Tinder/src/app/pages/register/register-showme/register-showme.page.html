@@ -10,10 +10,10 @@
       <ion-text>Muestrenme</ion-text>
     </div>
     <div class = "buttons-container">
-      <ion-button class = "{{gender.isSelected ? 'button-selected' : ''}}" *ngFor="let gender of genderValues let i = index" (click)="buttonnSelected(i)">{{ gender.name | uppercase }}</ion-button>
+      <ion-button class = "{{gender.isSelected ? 'button-selected' : ''}}" *ngFor="let gender of genderValues let i = index" (click)="buttonSelected(i)">{{ gender.name | uppercase }}</ion-button>
     </div>
     <div class="button-container">
-      <app-buttom-register [title]="'continuar'" [isDisabled]="disableButton" [url]="'/register/personal-information'"></app-buttom-register>
+      <app-buttom-register [title]="'continuar'" [isDisabled]="disableButton" [url]="'/register/personal-information'" (onSendData)="sendData()"></app-buttom-register>
     </div>
   </div>
 </ion-content>
