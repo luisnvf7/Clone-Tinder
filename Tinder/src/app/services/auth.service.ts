@@ -8,6 +8,8 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/firestore';
 
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -34,8 +36,6 @@ export class AuthService {
     delete this._userInformation[value];
   }
 
-  public login(): void {}
-
   public async register(): Promise<void> {
     let userCredentials = await this._auth.createUserWithEmailAndPassword(
       this._userInformation.credentialsInfo.username + '@gmail.com',
@@ -50,10 +50,39 @@ export class AuthService {
 
     console.log(userInfo);
   }
+
+  public async login(username: string, password: string): Promise<void> {
+    console.log('USERNAME', username);
+    console.log('PASSWORD', password);
+    try {
+      const result: any = await this._auth.signInWithEmailAndPassword(
+        username + '@gmail.com',
+        password
+      );
+      console.log('RESULT', result);
+      this._getUserById(result.user.uid).subscribe((v) =>
+        console.log('VALOR', v)
+      );
+    } catch (e) {
+      console.log('NO TE PUDISTE LOGEAR');
+    }
+  }
+
+  public async logOut(): Promise<void> {
+    console.log('CERRANDO SESION...');
+  }
+
+  private _getUserById(id: string): Observable<any> {
+    return this._usersCollection.doc(id).valueChanges();
+  }
 }
 
 /* 
   {
+    credentialsInfo: {
+      username: "luisnvf7",
+      password: "12345678"
+    },
     gender: {
       id: 1,
       name: "Hombre",
