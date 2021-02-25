@@ -29,6 +29,10 @@ export class RegisterGenderPage implements OnInit {
 
   ngOnInit() {}
 
+  public onBack(): void {
+    this._authService.clearAttribute('gender');
+  }
+
   public selectSex(index: number): void {
     this.genderValues = this.genderValues.map((g) => {
       return {

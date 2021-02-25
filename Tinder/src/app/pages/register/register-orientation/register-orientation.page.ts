@@ -66,6 +66,10 @@ export class RegisterOrientationPage implements OnInit {
   ngOnInit() {
   }
 
+  public onBack(): void {
+    this._authService.clearAttribute('sexualOrientation');
+  }
+
   public onSelectOrientation (index: number, selectValue: boolean) : void {    
     if (!selectValue) {
       this.orientations[index].isSelected = selectValue

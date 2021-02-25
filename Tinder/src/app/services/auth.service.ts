@@ -1,39 +1,55 @@
 import { Injectable } from '@angular/core';
 
-import {UserInfoInterface} from "../models/userInfoInterface"
+import { UserInfoInterface } from '../models/userInfoInterface';
 
-import { AngularFireAuth } from "@angular/fire/auth"
+import { AngularFireAuth } from '@angular/fire/auth';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  private _userInformation: UserInfoInterface;
+  private _usersCollection: AngularFirestoreCollection;
 
-  private _userInformation : UserInfoInterface
-
-  constructor(private _auth : AngularFireAuth) {}
-
-  public get userInformation () {
-    return this._userInformation
+  constructor(
+    private _auth: AngularFireAuth,
+    private _store: AngularFirestore
+  ) {
+    this._usersCollection = this._store.collection('Users');
   }
 
-  public set userInformation (userInformation : UserInfoInterface) {
-    this._userInformation = userInformation
-
+  public get userInformation() {
+    return this._userInformation;
   }
 
-  public clearAttribute () : void {
-    
+  public set userInformation(userInformation: UserInfoInterface) {
+    this._userInformation = userInformation;
   }
 
-  public login () : void {
-
+  public clearAttribute(value): void {
+    delete this._userInformation[value];
   }
 
-  public register () : void {
-    
-  }
+  public login(): void {}
 
+  public async register(): Promise<void> {
+    let userCredentials = await this._auth.createUserWithEmailAndPassword(
+      this._userInformation.credentialsInfo.username + '@gmail.com',
+      this._userInformation.credentialsInfo.password
+    );
+
+    this._userInformation.credentialsInfo.password = null;
+
+    let userInfo = await this._usersCollection
+      .doc(userCredentials.user.uid)
+      .set({ id: userCredentials.user.uid, ...this._userInformation });
+
+    console.log(userInfo);
+  }
 }
 
 /* 

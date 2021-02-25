@@ -1,11 +1,12 @@
-import { ModelInterface } from './modelInterface'
+import { ModelInterface } from './modelInterface';
 import { SexualOrientationInterface } from './sexualOrientationInterface';
 import { PersonalInformationInterface } from './personalInformationInterface';
-
+import { CredentialsInfo } from './credentialsInfo';
 
 export interface UserInfoInterface {
-    gender: ModelInterface,
-    sexualOrientation: SexualOrientationInterface,
-    genderToShow: ModelInterface,
-    personalInformation: PersonalInformationInterface,
+  credentialsInfo: CredentialsInfo;
+  gender: ModelInterface;
+  sexualOrientation: SexualOrientationInterface;
+  genderToShow: ModelInterface;
+  personalInformation: PersonalInformationInterface;
 }

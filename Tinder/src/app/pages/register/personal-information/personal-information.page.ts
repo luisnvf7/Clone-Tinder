@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormGroup,
-  FormControl,
   Validators,
   FormBuilder,
 } from '@angular/forms';
@@ -15,10 +13,7 @@ import { ErrorService } from 'src/app/services/error.service';
 })
 export class PersonalInformationPage implements OnInit {
   personalForm = this.fb.group({
-    name: [
-      '',
-      [Validators.required, Validators.maxLength(12), Validators.minLength(8)],
-    ],
+    name: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(5)],],
     age: ['', [Validators.required, Validators.max(120), Validators.min(1)]],
   });
 
@@ -29,6 +24,10 @@ export class PersonalInformationPage implements OnInit {
   ) {}
 
   ngOnInit() {}
+
+  public onBack(): void {
+    this._authService.clearAttribute('personalInformation');
+  }
 
   public onPersonal(): void {
     if (this.personalForm.status === 'INVALID') {
@@ -42,8 +41,6 @@ export class PersonalInformationPage implements OnInit {
         },
       };
     }
-
-    console.log(this.personalForm);
 
     // this.personalForm.setValue({ name: '', age: '' });
   }

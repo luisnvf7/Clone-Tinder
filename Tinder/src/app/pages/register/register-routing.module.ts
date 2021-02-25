@@ -21,7 +21,11 @@ const routes: Routes = [
   {
     path: 'personal-information',
     loadChildren: () => import('./personal-information/personal-information.module').then( m => m.PersonalInformationPageModule)
+  },  {
+    path: 'register-credentials-info',
+    loadChildren: () => import('./register-credentials-info/register-credentials-info.module').then( m => m.RegisterCredentialsInfoPageModule)
   }
+
 ];
 
 @NgModule({

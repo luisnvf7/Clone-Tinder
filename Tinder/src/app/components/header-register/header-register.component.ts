@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,12 +18,14 @@ export class HeaderRegisterComponent implements OnInit {
   @Input('url') private _url: string = '';
   @Input() public value: number;
   @Input() public buffer: number;
+  @Output() public onBack = new EventEmitter();
 
   constructor(private router: Router) {}
 
   ngOnInit() {}
 
   navigate() {
+    this.onBack.emit();
     this.router.navigateByUrl(this._url);
   }
 }

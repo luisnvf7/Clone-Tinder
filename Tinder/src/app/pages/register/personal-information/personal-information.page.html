@@ -1,6 +1,7 @@
 <header-register
   [url]="'register/register-showme'"
   [value]="1"
+  (onBack)="onBack()"
 ></header-register>
 
 <ion-content>
@@ -13,12 +14,11 @@
     </div>
 
     <app-buttom-register
-      [url]="'login'"
+      [url]="'register/register-credentials-info'"
       [isDisabled]="false"
       title="continuar"
       class="btn"
       (onSendData)="onPersonal()"
     ></app-buttom-register>
-    <ion-button (click)="onPersonal()"></ion-button>
   </div>
 </ion-content>

@@ -34,6 +34,10 @@ export class RegisterShowmePage implements OnInit {
 
   ngOnInit() {}
 
+  public onBack(): void {
+    this._authService.clearAttribute('genderToShow');
+  }
+
   public buttonSelected (index : number) : void {
     this.genderValues = this.genderValues.map(v => {
       return {
