@@ -10,12 +10,15 @@ import { PersonalInformationPageRoutingModule } from './personal-information-rou
 
 import { PersonalInformationPage } from './personal-information.page';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     PersonalInformationPageRoutingModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     PersonalInformationPage,

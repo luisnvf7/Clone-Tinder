@@ -27,6 +27,7 @@ export class AuthService {
 
   public set userInformation (userInformation : UserInfoInterface) {
     this._userInformation = userInformation
+
   }
 
   public clearAttribute () : void {

@@ -1,16 +1,24 @@
-<header-register [url]="'register/register-showme'" [value]="1"></header-register>
+<header-register
+  [url]="'register/register-showme'"
+  [value]="1"
+></header-register>
 
 <ion-content>
   <div class="container">
-    <ion-text>Escribe tu nombre</ion-text>
-    <ion-input></ion-input>
-    <ion-text>Cual es tu edad?</ion-text>
-    <ion-input></ion-input>
+    <div [formGroup]="personalForm">
+      <ion-text>Escribe tu nombre</ion-text>
+      <ion-input type="text" formControlName="name"></ion-input>
+      <ion-text>Cual es tu edad?</ion-text>
+      <ion-input type="number" formControlName="age"></ion-input>
+    </div>
+
     <app-buttom-register
       [url]="'login'"
       [isDisabled]="false"
       title="continuar"
       class="btn"
+      (onSendData)="onPersonal()"
     ></app-buttom-register>
+    <ion-button (click)="onPersonal()"></ion-button>
   </div>
 </ion-content>
