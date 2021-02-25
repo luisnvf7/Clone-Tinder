@@ -7,7 +7,7 @@ import { ToastService } from './toast.service';
 export class ErrorService {
   constructor(private _toastService: ToastService) {}
 
-  public getErrors(control: any): void {
+  public getErrorsControl(control: any): void {
     let array = [];
     for (const prop in control) {
       for (const prop1 in control[prop].errors) {
@@ -32,4 +32,13 @@ export class ErrorService {
     }
     this._toastService.presentToast(array.join('\n'), 'top', 'light');
   }
+
+  public getGenericErrors (error : string) : void {
+    //Switch case para mostrar el error
+  }
+
+  public authenticationErrors (error: string) : void {
+    
+  }
+
 }

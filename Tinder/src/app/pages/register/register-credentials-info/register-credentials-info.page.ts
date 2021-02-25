@@ -30,7 +30,7 @@ export class RegisterCredentialsInfoPage implements OnInit {
 
   public onCredential(): void {
     if (this.credentialsForm.status === 'INVALID') {
-      this._errorService.getErrors(this.credentialsForm.controls);
+      this._errorService.getErrorsControl(this.credentialsForm.controls);
     } else {
       this._authService.userInformation = {
         ...this._authService.userInformation,

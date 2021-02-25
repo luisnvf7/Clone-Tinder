@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
   public onLogin() : void {
     // this._toastService.presentToast("Supuesto Error")
     if (this.loginForm.status === "INVALID") {
-      this._errorService.getErrors(this.loginForm.controls)
+      this._errorService.getErrorsControl(this.loginForm.controls)
     } else {
       // console.log("VER ", this.loginForm.get('username').value)
       // console.log("PASSWORD", this.loginForm.get('password').value)

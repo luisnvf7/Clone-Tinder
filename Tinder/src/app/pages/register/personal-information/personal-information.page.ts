@@ -31,7 +31,7 @@ export class PersonalInformationPage implements OnInit {
 
   public onPersonal(): void {
     if (this.personalForm.status === 'INVALID') {
-      this._errorService.getErrors(this.personalForm.controls);
+      this._errorService.getErrorsControl(this.personalForm.controls);
     } else {
       this._authService.userInformation = {
         ...this._authService.userInformation,
