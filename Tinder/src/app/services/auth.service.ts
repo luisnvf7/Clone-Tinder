@@ -37,18 +37,26 @@ export class AuthService {
   }
 
   public async register(): Promise<void> {
-    let userCredentials = await this._auth.createUserWithEmailAndPassword(
-      this._userInformation.credentialsInfo.username + '@gmail.com',
-      this._userInformation.credentialsInfo.password
-    );
+    let userCredentials = null
+    try {
+      userCredentials = await this._auth.createUserWithEmailAndPassword(
+        this._userInformation.credentialsInfo.username + '@gmail.com',
+        this._userInformation.credentialsInfo.password
+      );
+    } catch(err) {
+      //Se llama el errors service
+    }
 
     this._userInformation.credentialsInfo.password = null;
-
-    let userInfo = await this._usersCollection
-      .doc(userCredentials.user.uid)
-      .set({ id: userCredentials.user.uid, ...this._userInformation });
-
-    console.log(userInfo);
+    try {
+      let userInfo = await this._usersCollection
+        .doc(userCredentials.user.uid)
+        .set({ id: userCredentials.user.uid, ...this._userInformation });
+  
+      console.log(userInfo);
+    } catch(err) {
+      //Se llama el errors service
+    }
   }
 
   public async login(username: string, password: string): Promise<void> {
