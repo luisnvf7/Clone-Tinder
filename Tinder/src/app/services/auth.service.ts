@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 import {UserInfoInterface} from "../models/userInfoInterface"
 
+import { AngularFireAuth } from "@angular/fire/auth"
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +11,7 @@ export class AuthService {
 
   private _userInformation : UserInfoInterface
 
-  constructor() {}
+  constructor(private _auth : AngularFireAuth) {}
 
   public get userInformation () {
     return this._userInformation
@@ -21,6 +23,14 @@ export class AuthService {
   }
 
   public clearAttribute () : void {
+    
+  }
+
+  public login () : void {
+
+  }
+
+  public register () : void {
     
   }
 
