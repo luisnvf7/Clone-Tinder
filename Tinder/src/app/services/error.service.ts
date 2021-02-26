@@ -34,7 +34,7 @@ export class ErrorService {
   }
 
   public getGenericErrors (error : string) : void {
-    //Switch case para mostrar el error
+    this._toastService.presentToast(error, 'top', 'light');
   }
 
   public authenticationErrors (error: string) : void {

@@ -29,19 +29,21 @@ export class RegisterCredentialsInfoPage implements OnInit {
   }
 
   public onCredential(): void {
-    if (this.credentialsForm.status === 'INVALID') {
-      this._errorService.getErrorsControl(this.credentialsForm.controls);
-    } else {
-      this._authService.userInformation = {
-        ...this._authService.userInformation,
-        credentialsInfo: {
-          username: this.credentialsForm.get('username').value,
-          password: this.credentialsForm.get('password').value,
-        },
-      };
+    if(this.credentialsForm.get('password').value !== this.credentialsForm.get('confirmPassword').value){
+      this._errorService.getGenericErrors('Las Contraseñas deben ser iguales');
+    }else {
+      if (this.credentialsForm.status === 'INVALID') {
+        this._errorService.getErrorsControl(this.credentialsForm.controls);
+      } else {
+        this._authService.userInformation = {
+          ...this._authService.userInformation,
+          credentialsInfo: {
+            username: this.credentialsForm.get('username').value,
+            password: this.credentialsForm.get('password').value,
+          },
+        };
+        this._authService.register();
+      }
     }
-
-    this._authService.register();
-    // this.credentialsForm.setValue({ name: '', age: '' });
   }
 }
