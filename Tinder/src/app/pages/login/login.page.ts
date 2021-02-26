@@ -28,8 +28,15 @@ export class LoginPage implements OnInit {
     if (this.loginForm.status === "INVALID") {
       this._errorService.getErrorsControl(this.loginForm.controls)
     } else {
-      this._authService.login(this.loginForm.get('username').value, this.loginForm.get('password').value)
-      //Peticion a firebase 
+      /* Se llama al loading */
+      this._authService.login(this.loginForm.get('username').value, this.loginForm.get('password').value).then((v) =>{
+        v.subscribe(valor => {
+          console.log("VALOR", valor)
+          /* Se cancela el loading */
+        })
+      }).catch((err) => {
+        /* Cancela en caso de error */
+      })
   
       //Termina de hacer peticion, vaciamos valores.
       // this.loginForm.patchValue({

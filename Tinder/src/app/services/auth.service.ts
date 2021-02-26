@@ -63,14 +63,13 @@ export class AuthService {
     }
   }
 
-  public async login(username: string, password: string): Promise<void> {
+  public async login(username: string, password: string): Promise<Observable<any>> {
     try {
       const result: any = await this._auth.signInWithEmailAndPassword(
         username + '@gmail.com',
         password
       );
-      this._getUserById(result.user.uid).subscribe((v) =>
-      );
+      return this._getUserById(result.user.uid)
     } catch (e) {
       this._errorService.authenticationErrors(e.code)
     }
