@@ -38,7 +38,25 @@ export class ErrorService {
   }
 
   public authenticationErrors (error: string) : void {
+
+    let errorMessage = ""
     
+    switch(error) {
+      case "auth/wrong-password":
+        errorMessage = "Contraseña incorrecta"
+        break;
+      case "auth/user-not-found":
+        errorMessage = "Usuario no existente"
+        break;
+      case "auth/invalid-email":
+        errorMessage = "Usuario invalido"
+        break;
+    }
+
+    
+  this._toastService.presentToast(errorMessage, 'top', 'light');
+
+
   }
 
 }

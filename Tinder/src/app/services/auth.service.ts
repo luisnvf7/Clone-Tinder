@@ -9,6 +9,7 @@ import {
 } from '@angular/fire/firestore';
 
 import { Observable } from 'rxjs';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,8 @@ export class AuthService {
 
   constructor(
     private _auth: AngularFireAuth,
-    private _store: AngularFirestore
+    private _store: AngularFirestore,
+    private _errorService : ErrorService
   ) {
     this._usersCollection = this._store.collection('Users');
   }
@@ -72,7 +74,10 @@ export class AuthService {
         console.log('VALOR', v)
       );
     } catch (e) {
+      this._errorService.authenticationErrors(e.code)
+      console.log("ERROR",e)
       console.log('NO TE PUDISTE LOGEAR');
+
     }
   }
 
