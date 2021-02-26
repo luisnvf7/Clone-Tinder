@@ -29,10 +29,21 @@ export class RegisterGenderPage implements OnInit {
 
   ngOnInit() {}
 
+   /**
+   * Button that is going to listen the event 
+   * to redirect to the back page
+   * @return  {void}
+   */
   public onBack(): void {
     this._authService.clearAttribute('gender');
   }
 
+  /**
+   * Button that is going to listen the event 
+   * to select the sex value
+   * @param {boolean}
+   * @return  {void}
+   */
   public selectSex(index: number): void {
     this.genderValues = this.genderValues.map((g) => {
       return {
@@ -50,13 +61,22 @@ export class RegisterGenderPage implements OnInit {
     };
   }
 
+   /**
+   * Button that is going to listen the event 
+   * the checkbox button
+   * @param {boolean}
+   * @return  {void}
+   */
   public onCheckBox(value: boolean): void {
     this.checked = value;
-    console.log(value);
   }
 
+   /**
+   * Button that is going to listen the event 
+   * to send the data to the service
+   * @return  {void}
+   */
   public sendData(): void {
-
     this._authService.userInformation = {
       ...this._authService.userInformation,
       gender: { ...this._genderData, isVisibleProfile: this.checked },

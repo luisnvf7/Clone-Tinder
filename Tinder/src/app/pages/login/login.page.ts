@@ -20,6 +20,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
   
+  /**
+   * Event listening to the login action
+   * @return  {void}
+   */
   public onLogin() : void {
     if (this.loginForm.status === "INVALID") {
       this._errorService.getErrorsControl(this.loginForm.controls)

@@ -9,21 +9,25 @@ import { ErrorService } from 'src/app/services/error.service';
   styleUrls: ['./register-credentials-info.page.scss'],
 })
 export class RegisterCredentialsInfoPage implements OnInit {
-  credentialsForm = this.fb.group({
+  credentialsForm = this._fb.group({
     username: ['',[Validators.required, Validators.maxLength(12), Validators.minLength(5)]],
     password: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(6)]],
     confirmPassword: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(6)]],
   });
 
   constructor(
-    private fb: FormBuilder,
+    private _fb: FormBuilder,
     private _authService: AuthService,
     private _errorService: ErrorService
   ) {}
 
   ngOnInit() {}
 
- 
+  /**
+   * Button that is going to listen the event 
+   * to redirect to the back page
+   * @return  {void}
+   */
   public onBack(): void {
     this._authService.clearAttribute('credentialsInfo');
     this.credentialsForm.patchValue({
@@ -33,6 +37,12 @@ export class RegisterCredentialsInfoPage implements OnInit {
     })
   }
 
+  /** 
+   * Check if the form has some errors
+   * and set the values to the userInformation
+   * variable
+   * @return  {void}
+   */
   public onCredential(): void {
     if(this.credentialsForm.get('password').value !== this.credentialsForm.get('confirmPassword').value){
       this._errorService.getGenericErrors('Las Contraseñas deben ser iguales');

@@ -12,20 +12,25 @@ import { Router } from '@angular/router';
  *
  * @Input {string} _url redirect to any page
  * @Input {number} value ion-progress-bar attribute
+ * @Output {void} onBack button that is going to redirect to another page
  * @Input {number} buffer ion-progress-bar attribute
  */
 export class HeaderRegisterComponent implements OnInit {
-  @Input('url') private _url: string = '';
   @Input() public value: number;
   @Input() public buffer: number;
   @Output() public onBack = new EventEmitter();
+  @Input('url') private _url: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private _router: Router) {}
 
   ngOnInit() {}
 
-  navigate() {
+  /**
+   * Button that is going to go to another page
+   * @return  {void}
+   */
+  public navigate() : void {
     this.onBack.emit();
-    this.router.navigateByUrl(this._url);
+    this._router.navigateByUrl(this._url);
   }
 }
