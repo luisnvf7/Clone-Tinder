@@ -31,10 +31,21 @@ export class RegisterShowmePage implements OnInit {
 
   ngOnInit() {}
 
+   /**
+   * Button that is going to listen the event 
+   * to redirect to the back page
+   * @return  {void}
+   */
   public onBack(): void {
     this._authService.clearAttribute('genderToShow');
   }
 
+  /**
+   * Button that is going to select the button
+   * 
+   * @param {number}
+   * @return  {void}
+   */
   public buttonSelected (index : number) : void {
     this.genderValues = this.genderValues.map(v => {
       return {
@@ -46,7 +57,13 @@ export class RegisterShowmePage implements OnInit {
     this.disableButton = false
   }
 
-  sendData () : void {
+   /**
+   * Button that is going to send the data 
+   * to the service value
+   * 
+   * @return  {void}
+   */
+  public sendData () : void {
     this._genderToShow = this.genderValues.find(v => {
       return v.isSelected
     })

@@ -61,10 +61,21 @@ export class RegisterOrientationPage implements OnInit {
   ngOnInit() {
   }
 
+   /**
+   * Button that is going to listen the event 
+   * to redirect to the back page
+   * @return  {void}
+   */
   public onBack(): void {
     this._authService.clearAttribute('sexualOrientation');
   }
 
+   /**
+   * Button that is going to listen the select 
+   * orientation
+   * @param {number, boolean}
+   * @return  {void}
+   */
   public onSelectOrientation (index: number, selectValue: boolean) : void {    
     if (!selectValue) {
       this.orientations[index].isSelected = selectValue
@@ -79,10 +90,20 @@ export class RegisterOrientationPage implements OnInit {
     }
   }
 
+  /**
+   * Event listening the checkbox action
+   * @param {boolean}
+   * @return  {void}
+   */
   public checked (value : boolean) : void {
     this._showOrientation = value
   }
 
+   /**
+   * Button that is going to listen the event 
+   * to send the data to the service
+   * @return  {void}
+   */
   public sendData () : void {
     this._sexualOrientation = {
       orientations: this.orientations.filter(v => v.isSelected).map(v => {

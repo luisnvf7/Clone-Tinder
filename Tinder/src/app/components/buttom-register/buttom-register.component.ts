@@ -9,8 +9,12 @@ import { Router } from '@angular/router';
 })
 
 /**
- * Button that is going to be in the register page
- * @Input 
+ * This component represent a special button in al register pages.
+ * 
+ * @Input {boolean} isDisabled check if button is disabled
+ * @Input {string} title content of the button
+ * @Input {string} _url url to redirect to another page
+ * @Output {void} onSendData event to go to another page using it's parent
 */
 
 export class ButtomRegisterComponent implements OnInit {
@@ -19,14 +23,19 @@ export class ButtomRegisterComponent implements OnInit {
 
   @Input() public title : string = "" 
 
-  @Input('url') private _url : string = "" 
-
   @Output() public onSendData = new EventEmitter()
+
+  @Input('url') private _url : string = "" 
 
   constructor(private _router: Router) { }
 
   ngOnInit() {}
 
+  /**
+   * Button that is going to listen the event 
+   * to redirect to another page
+   * @return  {void}
+   */
   public goToAnotherPage () : void {
     this.onSendData.emit()
     this._router.navigateByUrl(this._url)

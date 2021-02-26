@@ -8,6 +8,11 @@ export class ToastService {
 
   constructor(private _toastController: ToastController) { }
 
+  /**
+   * Event to present the toast
+   * @param {string, "top" | "bottom" | "middle" ,color}
+   * @return  {Promise<void>}
+   */
   public async presentToast(message: string, position: "top" | "bottom" | "middle", color : any) : Promise<void> {
     const toast = await this._toastController.create({
       message,

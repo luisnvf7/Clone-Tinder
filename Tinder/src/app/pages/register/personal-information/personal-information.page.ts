@@ -21,12 +21,23 @@ export class PersonalInformationPage implements OnInit {
   ) {}
 
   ngOnInit() {}
-
+  
+   /**
+   * Button that is going to listen the event 
+   * to redirect to the back page
+   * @return  {void}
+   */
   public onBack(): void {
     this._authService.clearAttribute('personalInformation');
     this.personalForm.patchValue({ name: '', age: '' });
   }
 
+   /** 
+   * Check if the form has some errors
+   * and set the values to the userInformation
+   * variable
+   * @return  {void}
+   */
   public onPersonal(): void {
     if (this.personalForm.status === 'INVALID') {
       this._errorService.getErrorsControl(this.personalForm.controls);
