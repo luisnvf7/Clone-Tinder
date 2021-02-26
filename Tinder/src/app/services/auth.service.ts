@@ -39,6 +39,7 @@ export class AuthService {
   }
 
   public async register(): Promise<void> {
+    //firebase auth email and password
     let userCredentials = null
     try {
       userCredentials = await this._auth.createUserWithEmailAndPassword(
@@ -46,43 +47,36 @@ export class AuthService {
         this._userInformation.credentialsInfo.password
       );
     } catch(err) {
-      //Se llama el errors service
+      this._errorService.authenticationErrors(err.code)
     }
 
+    //save user data in firebase
     this._userInformation.credentialsInfo.password = null;
     try {
       let userInfo = await this._usersCollection
         .doc(userCredentials.user.uid)
         .set({ id: userCredentials.user.uid, ...this._userInformation });
   
-      console.log(userInfo);
     } catch(err) {
-      //Se llama el errors service
+      console.log('error en servicio auth',err)
+      this._errorService.cloudFirebaseErrors('setDataError')
     }
   }
 
   public async login(username: string, password: string): Promise<void> {
-    console.log('USERNAME', username);
-    console.log('PASSWORD', password);
     try {
       const result: any = await this._auth.signInWithEmailAndPassword(
         username + '@gmail.com',
         password
       );
-      console.log('RESULT', result);
       this._getUserById(result.user.uid).subscribe((v) =>
-        console.log('VALOR', v)
       );
     } catch (e) {
       this._errorService.authenticationErrors(e.code)
-      console.log("ERROR",e)
-      console.log('NO TE PUDISTE LOGEAR');
-
     }
   }
 
   public async logOut(): Promise<void> {
-    console.log('CERRANDO SESION...');
   }
 
   private _getUserById(id: string): Observable<any> {

@@ -37,6 +37,20 @@ export class ErrorService {
     this._toastService.presentToast(error, 'top', 'light');
   }
 
+  public cloudFirebaseErrors (error: string) : void {
+    let errorMessage = ""
+
+    switch(error){
+      case "setDataError":
+        errorMessage = "Error al momento de guardar datos"
+        break;
+      default:
+        errorMessage = "Error Desconocido al momento de guardar datos"
+        break;
+    }
+    this._toastService.presentToast(errorMessage, 'top', 'light');
+  }
+
   public authenticationErrors (error: string) : void {
 
     let errorMessage = ""
@@ -51,12 +65,16 @@ export class ErrorService {
       case "auth/invalid-email":
         errorMessage = "Usuario invalido"
         break;
+      case "auth/email-already-exists":
+        errorMessage = "El nombre de usuario ya existe"
+        break;
+      case "auth/internal-error":
+        errorMessage = "El servidor de autenticación encontró un error inesperado cuando se intentaba procesar la solicitud"
+        break;
+      default :
+        errorMessage = "Error desconocido al momento de autenticar"
+      break;
     }
-
-    
-  this._toastService.presentToast(errorMessage, 'top', 'light');
-
-
+    this._toastService.presentToast(errorMessage, 'top', 'light');
   }
-
 }
