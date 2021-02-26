@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Validators,
-  FormBuilder,
-} from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { ErrorService } from 'src/app/services/error.service';
 
@@ -12,13 +9,13 @@ import { ErrorService } from 'src/app/services/error.service';
   styleUrls: ['./personal-information.page.scss'],
 })
 export class PersonalInformationPage implements OnInit {
-  personalForm = this.fb.group({
+  public personalForm = this._fb.group({
     name: ['', [Validators.required, Validators.maxLength(12), Validators.minLength(5)],],
     age: ['', [Validators.required, Validators.max(120), Validators.min(1)]],
   });
 
   constructor(
-    private fb: FormBuilder,
+    private _fb: FormBuilder,
     private _authService: AuthService,
     private _errorService: ErrorService
   ) {}
@@ -27,6 +24,7 @@ export class PersonalInformationPage implements OnInit {
 
   public onBack(): void {
     this._authService.clearAttribute('personalInformation');
+    this.personalForm.patchValue({ name: '', age: '' });
   }
 
   public onPersonal(): void {
@@ -41,7 +39,5 @@ export class PersonalInformationPage implements OnInit {
         },
       };
     }
-
-    // this.personalForm.setValue({ name: '', age: '' });
   }
 }

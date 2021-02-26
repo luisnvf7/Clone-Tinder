@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-
 import  { ModelInterface } from "../../../models/modelInterface"
 @Component({
   selector: 'app-register-showme',
@@ -10,7 +9,6 @@ import  { ModelInterface } from "../../../models/modelInterface"
 export class RegisterShowmePage implements OnInit {
 
   public disableButton : boolean = true
-
   public genderValues : ModelInterface[] = [{
     id: 1,
     name: "mujeres",
@@ -26,8 +24,7 @@ export class RegisterShowmePage implements OnInit {
     name: "todos",
     isSelected: false
   }
-] 
-
+  ] 
   private _genderToShow : ModelInterface
 
   constructor(private _authService : AuthService) { }

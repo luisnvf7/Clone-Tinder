@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-
 @Component({
   selector: 'app-register-welcome',
   templateUrl: './register-welcome.page.html',

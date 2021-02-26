@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SexualOrientationInterface } from 'src/app/models/sexualOrientationInterface';
 import { AuthService } from 'src/app/services/auth.service';
-
 import  { ModelInterface  } from "../../../models/modelInterface"
 
 @Component({
@@ -12,7 +11,6 @@ import  { ModelInterface  } from "../../../models/modelInterface"
 export class RegisterOrientationPage implements OnInit {
 
   public disableButton : boolean = true
-
   public orientations : ModelInterface[] = [
     { 
       id: 1, 
@@ -55,10 +53,7 @@ export class RegisterOrientationPage implements OnInit {
       isSelected: false
     }
   ]
-
   private _showOrientation : boolean = false
-
-
   private _sexualOrientation : SexualOrientationInterface
 
   constructor(private _authService : AuthService) { }
@@ -103,6 +98,4 @@ export class RegisterOrientationPage implements OnInit {
       sexualOrientation : this._sexualOrientation
     }
   }
-
-
 }

@@ -10,8 +10,6 @@ import { ModelInterface } from '../../../models/modelInterface';
 export class RegisterGenderPage implements OnInit {
   public checked: boolean = false;
   public disableButton: boolean = true;
-  private _genderData: ModelInterface;
-
   public genderValues: ModelInterface[] = [
     {
       id: 1,
@@ -24,6 +22,8 @@ export class RegisterGenderPage implements OnInit {
       isSelected: false,
     },
   ];
+  private _genderData: ModelInterface;
+
 
   constructor(private _authService: AuthService) {}
 

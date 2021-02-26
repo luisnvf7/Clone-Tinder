@@ -26,6 +26,11 @@ export class RegisterCredentialsInfoPage implements OnInit {
  
   public onBack(): void {
     this._authService.clearAttribute('credentialsInfo');
+    this.credentialsForm.patchValue({
+      username: '',
+      password: '',
+      confirmPassword: ''
+    })
   }
 
   public onCredential(): void {
