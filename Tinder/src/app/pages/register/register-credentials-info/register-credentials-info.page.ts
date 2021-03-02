@@ -46,9 +46,11 @@ export class RegisterCredentialsInfoPage implements OnInit {
   public onCredential(): void {
     if(this.credentialsForm.get('password').value !== this.credentialsForm.get('confirmPassword').value){
       this._errorService.getGenericErrors('Las Contraseñas deben ser iguales');
+      this._authService.subject.next(false)
     }else {
       if (this.credentialsForm.status === 'INVALID') {
         this._errorService.getErrorsControl(this.credentialsForm.controls);
+        this._authService.subject.next(false)
       } else {
         this._authService.userInformation = {
           ...this._authService.userInformation,
@@ -57,6 +59,7 @@ export class RegisterCredentialsInfoPage implements OnInit {
             password: this.credentialsForm.get('password').value,
           },
         };
+        this._authService.subject.next(true)
         this._authService.register();
       }
     }

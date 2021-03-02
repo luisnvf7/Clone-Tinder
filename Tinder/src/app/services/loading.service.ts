@@ -7,19 +7,26 @@ import { LoadingController } from '@ionic/angular';
 })
 export class LoadingService {
 
+  private _loading: any
+
   constructor(private _loadingController: LoadingController) { }
 
   public async presentLoading() {
     /** Nuevo */
-    const loading = await this._loadingController.create({
+    this._loading = await this._loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Please wait...',
-      duration: 2000
     });
-    await loading.present();
+    await this._loading.present();
 
-    const { role, data } = await loading.onDidDismiss();
-    console.log('Loading dismissed!');
+    // const { role, data } = await loading.onDidDismiss();
+    // console.log('Loading dismissed!');
+  }
+
+  public async onDismissLoading () {
+
+    await this._loading.dismiss()
+
   }
 
 }

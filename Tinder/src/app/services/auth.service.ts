@@ -8,7 +8,7 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/firestore';
 
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ErrorService } from './error.service';
 
 @Injectable({
@@ -17,14 +17,18 @@ import { ErrorService } from './error.service';
 export class AuthService {
   private _userInformation: UserInfoInterface;
   private _usersCollection: AngularFirestoreCollection;
+  public subject = new Subject<boolean>();
+
 
   constructor(
     private _auth: AngularFireAuth,
     private _store: AngularFirestore,
     private _errorService : ErrorService
   ) {
-    this._usersCollection = this._store.collection('Users');
+    this._usersCollection = this._store.collection('users');
   }
+
+  
 
   public get userInformation() {
     return this._userInformation;
@@ -76,6 +80,10 @@ export class AuthService {
   }
 
   public async logOut(): Promise<void> {
+  }
+
+  public getValue() : Observable<boolean> {
+    return this.subject.asObservable()
   }
 
   private _getUserById(id: string): Observable<any> {
