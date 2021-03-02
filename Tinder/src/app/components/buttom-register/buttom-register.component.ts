@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-buttom-register',
@@ -17,7 +18,11 @@ import { Router } from '@angular/router';
  * @Output {void} onSendData event to go to another page using it's parent
 */
 
+
+
 export class ButtomRegisterComponent implements OnInit {
+
+  private _formIsValid : boolean = false
 
   @Input() public isDisabled : boolean = true
 
@@ -27,9 +32,19 @@ export class ButtomRegisterComponent implements OnInit {
 
   @Input('url') private _url : string = "" 
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private _authService: AuthService) { 
 
-  ngOnInit() {}
+    this._authService.getValue().subscribe(v => {
+      this._formIsValid = v
+    })
+
+  }
+
+  ngOnInit() {
+    // this.onGetValue().subscribe(v => {
+    //   console.log("VALOR", v)
+    // })
+  }
 
   /**
    * Button that is going to listen the event 
@@ -38,7 +53,9 @@ export class ButtomRegisterComponent implements OnInit {
    */
   public goToAnotherPage () : void {
     this.onSendData.emit()
-    this._router.navigateByUrl(this._url)
+    if (this._formIsValid) {
+      this._router.navigateByUrl(this._url)
+    }
   }
 
 }
