@@ -10,6 +10,7 @@ export class LoadingService {
   constructor(private _loadingController: LoadingController) { }
 
   public async presentLoading() {
+    /** Nuevo */
     const loading = await this._loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Please wait...',
